@@ -7,10 +7,12 @@ const app = express()
 // app.use(cors())
 app.use(express.json())
 
+const PORT = process.env.PORT || 3000
+
 const server = http.createServer(app)
 const io = new Server(server, {
     cors: {
-        origin: ["https://chess-kage.vercel.app/"],  
+        origin: ["https://chess-kage-git-main-d3xferno.vercel.app"],  
         credentials: true,
     }
 })
@@ -37,4 +39,4 @@ io.on('connection',socket=>{
   })
 })
 
-server.listen(3000)
+server.listen(PORT,console.log('Server running in port:'+PORT))
