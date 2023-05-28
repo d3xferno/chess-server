@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000
 const server = http.createServer(app)
 const io = new Server(server, {
     cors: {
-        origin: ["https://chess-kage-git-main-d3xferno.vercel.app"],  
+        origin: ["https://chess-shajith-git-main-d3xferno.vercel.app/"],  
         credentials: true,
     }
 })
