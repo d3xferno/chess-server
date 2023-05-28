@@ -1,23 +1,15 @@
-const express = require('express')
 const http = require('http')
-const cors = require('cors')
 const { Server } = require('socket.io')
 
-const app = express()
-// app.use(cors())
-app.use(express.json())
-
 const PORT = process.env.PORT || 3000
-const URL = process.env.FURL || 'http://localhost:5173/'
+const URL = process.env.FRONTEND_URL || "http://localhost:5173"
 
-const server = http.createServer(app)
+const server = http.createServer()
 const io = new Server(server, {
-    cors: {
-        origin: [URL],  
+    cors:{
+        origin: URL
     }
 })
-
-app.get('/',(req,res)=>res.send('Working'))
 
 io.on('connection', (socket) => {
     socket.on('move', (msg) => {
